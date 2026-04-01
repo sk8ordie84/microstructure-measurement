@@ -1,0 +1,62 @@
+{
+  "VERSION": "1.0",
+  "NOTE": "DEX CLOB toxicity scoring config. Do not add venues or pairs without gate approval.",
+
+  "venues": {
+    "hyperliquid": {
+      "api_url": "https://api.hyperliquid.xyz/info",
+      "method": "POST",
+      "pairs": {
+        "BTC-PERP": {"coin": "BTC"},
+        "ETH-PERP": {"coin": "ETH"}
+      },
+      "prefix": "hl"
+    },
+    "dydx": {
+      "api_url": "https://indexer.dydx.trade/v4/orderbooks/perpetualMarket",
+      "method": "GET",
+      "pairs": {
+        "BTC-PERP": {"symbol": "BTC-USD"},
+        "ETH-PERP": {"symbol": "ETH-USD"}
+      },
+      "prefix": "dx"
+    }
+  },
+
+  "collection": {
+    "top_levels": 10,
+    "near_touch_levels": 3,
+    "snapshot_interval_minutes": 5,
+    "request_delay_seconds": 0.3
+  },
+
+  "scoring": {
+    "baseline_window_days": 7,
+    "rolling_window_snapshots": 12,
+    "spread_score_max": 25,
+    "thin_score_max": 25,
+    "imbalance_score_max": 25,
+    "instab_score_max": 25,
+    "book_thin_threshold_pct": -5.0,
+    "spread_expansion_threshold_bps": 0.5,
+    "imbalance_scale_factor": 2.0,
+    "instab_scale_factor": 5.0
+  },
+
+  "bands": {
+    "LOW":      {"min": 0,  "max": 24},
+    "NORMAL":   {"min": 25, "max": 49},
+    "ELEVATED": {"min": 50, "max": 74},
+    "TOXIC":    {"min": 75, "max": 100}
+  },
+
+  "backtest": {
+    "horizons_snapshots": [12, 24, 48],
+    "horizons_labels": ["1h", "2h", "4h"],
+    "min_stressed_observations": 50,
+    "significance_level": 0.05,
+    "min_cohens_d": 0.25,
+    "min_spearman_r": 0.30,
+    "midnight_exclusion_minutes": 30
+  }
+}

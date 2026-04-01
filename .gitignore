@@ -1,0 +1,52 @@
+# Runtime outputs — never commit live data
+logs/
+*.jsonl
+*.log
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+ENV/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Local config overrides
+*.local
+config_local.json
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
