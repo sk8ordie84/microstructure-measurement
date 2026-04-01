@@ -46,3 +46,9 @@ Python 3 · REST API clients (no dependencies beyond `requests`) · rolling wind
 Project-based contract work. Typical scope: 3–8 weeks. Deliverable is working, documented code and a handoff session.
 
 Areas: orderbook monitoring and health infrastructure, market-data collection and normalization, binary signal calibration frameworks, operator dashboards for trading infrastructure.
+
+---
+
+## Contact
+
+**Enquiries:** [your@email.com]
