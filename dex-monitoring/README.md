@@ -4,6 +4,8 @@ Real-time CLOB toxicity scoring system for DEX perpetuals markets.
 
 Currently running on Hyperliquid and dYdX v4, BTC-PERP and ETH-PERP. Collects L2 snapshots every 5 minutes. Produces rolling toxicity scores and 5 structured health outputs.
 
+**Note on band calibration:** The scoring bands (LOW / NORMAL / ELEVATED / TOXIC) depend on a 7-day rolling spread baseline that requires stable collection over that window before distributions become representative. During the first 7 days of a fresh deployment, band classifications will run hotter than expected — this is a known cold-start property of the baseline, not a bug. Do not interpret band distributions before Day 7 at the earliest.
+
 ---
 
 ## Files
