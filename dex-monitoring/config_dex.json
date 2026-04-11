@@ -37,9 +37,9 @@
     "thin_score_max": 25,
     "imbalance_score_max": 25,
     "instab_score_max": 25,
-    "book_thin_threshold_pct": -5.0,
+    "book_thin_threshold_pct": -15.0,
     "spread_expansion_threshold_bps": 0.5,
-    "imbalance_scale_factor": 2.0,
+    "imbalance_scale_factor": 0.5,
     "instab_scale_factor": 5.0
   },
 

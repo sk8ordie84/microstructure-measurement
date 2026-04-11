@@ -113,12 +113,20 @@ def load_toxicity(days_back: int = 1) -> Dict[str, List[dict]]:
 # ── 1. Completeness ──────────────────────────────────────────────────
 
 def compute_completeness(snap_groups: Dict[str, List[dict]], ts: str) -> dict:
+    now = datetime.now(timezone.utc)
+    cutoff = now - timedelta(hours=24)
     streams = {}
     all_ok = True
 
     for _, _, key in VENUE_PAIRS:
         entries = snap_groups.get(key, [])
-        actual = len(entries)
+        # Filter to genuine last-24h by timestamp — load_snapshots pulls 2 calendar
+        # files, so len(entries) can exceed 288 without this filter.
+        entries_24h = [
+            e for e in entries
+            if datetime.fromisoformat(e["timestamp"]) >= cutoff
+        ]
+        actual = len(entries_24h)
         pct = actual / EXPECTED_PER_DAY
         flagged = pct < COMPLETENESS_FLAG_THRESHOLD
         if flagged:
@@ -136,11 +144,7 @@ def compute_completeness(snap_groups: Dict[str, List[dict]], ts: str) -> dict:
         "expected_per_stream_per_day": EXPECTED_PER_DAY,
         "all_streams_ok": all_ok,
         "streams": streams,
-        "note": (
-            "Flag is informational only. "
-            "Low completeness in the first 1-5 days is expected — cron may not yet be "
-            "running a full 24h cycle. Evaluate completeness from Day 5 onward."
-        ),
+        "note": "Counts snapshots within the true last 24h by timestamp.",
     }
 
 
