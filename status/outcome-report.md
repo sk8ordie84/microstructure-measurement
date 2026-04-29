@@ -1,7 +1,6 @@
 # Outcome Report — Prediction Market Pipeline Extraction
 
-**Date:** 2026-04-29  
-**Classification:** Internal factual record
+**Date:** 2026-04-29
 
 ---
 

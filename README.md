@@ -69,9 +69,11 @@ Python 3 · REST API clients (`requests` only) · rolling window statistics · J
 
 ## Engagement
 
-Project-based contract work. Typical scope: 3–8 weeks. Deliverable is working, documented code and a handoff session.
+STUDIO11 offers **Edge Audit** — a fixed-scope, 4-week measurement infrastructure audit for systematic quant operations running live capital without a dedicated measurement team.
 
-Areas: orderbook monitoring and health infrastructure, market-data collection and normalization, binary signal calibration frameworks, operator dashboards for data infrastructure.
+Scope: binary-scored assessment of fill quality, signal stability, capacity ceiling, measurement layer completeness, and operational consistency. Deliverable is a structured audit report, gap register, logging specification, and decision-ready summary.
+
+Enquiries and application: hello@studio-11.co
 
 ---
 
