@@ -109,6 +109,10 @@ Pricing is fixed at scoping. There is no per-hour charge, no scope creep mechani
 - 50% on Week 1 kickoff
 - 50% on Week 4 final report delivery
 
+**Accepted payment methods:**
+- USDC on Polygon (preferred, instant settlement)
+- USD or EUR wire via Wise Business (issued on request, 2-3 day settlement)
+
 **Refund clause:** if at the end of Week 1 the data structure or scope makes the engagement unworkable in the planned 4-week window, the engagement is closed and the kickoff payment is refunded in full.
 
 ---
