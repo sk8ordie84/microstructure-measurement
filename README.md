@@ -1,6 +1,6 @@
 # Microstructure & Measurement
 
-Measurement infrastructure for operators of systematic strategies on prediction markets, sports betting exchanges, and DEX perpetuals.
+Measurement infrastructure for operators of systematic strategies on prediction markets and DEX perpetuals.
 
 This repository is the methodology STUDIO11 uses for **Edge Audit** — a 4-week independent measurement engagement. The infrastructure was first run on our own prediction market thesis. **The thesis failed.** We documented the negative finding in full and shipped the methodology as a service.
 
@@ -29,7 +29,7 @@ This is the outcome our measurement framework was built to surface, and the outc
 
 ## Edge Audit — engagement
 
-A fixed-scope, 4-week independent measurement audit for operators running systematic or scored systems on Polymarket, Kalshi, sports betting exchanges, or DEX perpetuals.
+A fixed-scope, 4-week independent measurement audit for operators running systematic or scored systems on Polymarket, Kalshi, prediction markets, or DEX perpetuals.
 
 **You provide:** execution logs and resolved outcome data on a locked forward cohort.
 

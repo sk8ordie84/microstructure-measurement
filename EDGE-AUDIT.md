@@ -1,6 +1,6 @@
 # Edge Audit — Engagement Specification
 
-A fixed-scope, 4-week independent measurement audit by STUDIO11 for operators of systematic or scored systems on Polymarket, Kalshi, sports betting exchanges, and DEX perpetuals.
+A fixed-scope, 4-week independent measurement audit by STUDIO11 for operators of systematic or scored systems on Polymarket, Kalshi, prediction markets, and DEX perpetuals.
 
 This document is the operator-facing spec: scope, schedule, deliverables, data handling, price band, and what we will not do.
 
@@ -20,9 +20,9 @@ For the negative result we ran on our own thesis, see [`status/outcome-report.md
 We work with operators across:
 
 - Prediction markets — Polymarket, Kalshi, Manifold, Augur-class DePMs
-- Sports betting exchanges — Betfair, Smarkets, Pinnacle-as-exchange
 - DEX perpetuals — Hyperliquid, dYdX, Drift, GMX-class
-- Adjacent binary or scored systems on request
+- Binary contract trading systems and scored prediction operators
+- Adjacent event-driven or calibration-sensitive systems on request
 
 If you are a retail trader, a strategy advisory shopper, or seeking signals or forward calls, this is not the engagement.
 
@@ -114,6 +114,8 @@ Pricing is fixed at scoping. There is no per-hour charge, no scope creep mechani
 - USD or EUR wire via Wise Business (issued on request, 2-3 day settlement)
 
 **Refund clause:** if at the end of Week 1 the data structure or scope makes the engagement unworkable in the planned 4-week window, the engagement is closed and the kickoff payment is refunded in full.
+
+**No-finding guarantee:** if the final report does not surface at least one actionable finding the operator did not already know, the engagement fee is refunded in full at the operator's request, no questions asked. The operator decides after reading the report. We back the methodology, not a feel-good outcome.
 
 ---
 
