@@ -56,7 +56,7 @@ Draft report delivered for principal review at the start of week 4. One revision
 
 5. **Forward cohort benchmark output** — full benchmark notebook artefact (CSV, plots, summary tables) showing SYSTEM vs `BASELINE_NAIVE` PnL deltas, hit rate deltas, clustered CIs, and cost decomposition.
 
-A redacted sample audit report is available on request after a scoping call.
+A six-page sample audit report is available publicly at [`case-studies/D-sample-edge-audit-report.md`](./case-studies/D-sample-edge-audit-report.md). A redacted version of a real engagement is available on request after a scoping call.
 
 ---
 
