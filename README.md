@@ -67,7 +67,7 @@ Live status of the measurement systems and the outcome report from the predictio
 - [A — Prediction Market Data Pipeline](./case-studies/A-prediction-market-pipeline.md) — collection, scoring, and outcome calibration for binary contracts
 - [B — DEX Perpetuals Orderbook Monitoring](./case-studies/B-dex-orderbook-monitoring.md) — toxicity scoring on Hyperliquid and dYdX v4, plus a write-up of a float boundary classification bug found in production
 - [C — Three-Layer Calibration Framework](./case-studies/C-binary-signal-calibration.md) — outcome validation for binary scored systems with Wilson CI, Spearman correlation, and tier stratification
-- [D — Sample Edge Audit Report](./case-studies/D-sample-edge-audit-report.md) — illustrative six-page audit deliverable on a fictional Polymarket NBA prop strategy (calibration, forward cohort, spread decomposition, three failure modes)
+- [D — Sample Edge Audit Report](./case-studies/D-sample-edge-audit-report.md) — illustrative six-page audit deliverable on a fictional Polymarket political-event strategy (calibration, forward cohort, spread decomposition, three failure modes)
 
 ---
 

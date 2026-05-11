@@ -1,7 +1,7 @@
 # Edge Audit — Sample Report
 
 **Client:** Operator A (redacted)
-**Asset class:** Polymarket NBA player props
+**Asset class:** Polymarket political event binaries
 **Sample:** 247 resolved positions across 89 unique events
 **Window:** 90 days, ending boundary date T-0
 **Prepared by:** STUDIO11
@@ -10,7 +10,7 @@
 
 ## Page 1 — Executive Summary
 
-**Engagement scope.** Operator A submitted 247 resolved positions on NBA player-prop binary contracts (points, rebounds, assists, threes) traded on Polymarket over a 90-day window. We were asked three questions: is the operator's stated probability well-calibrated, does the live PnL exceed a naive baseline once we lock a forward cohort, and where is execution leaking. We received fills, timestamps, stated_p at entry, market mid at entry, and resolution. We did not receive the model itself and did not need to.
+**Engagement scope.** Operator A submitted 247 resolved positions on political-event binary contracts (election outcomes, vote-margin thresholds, nomination markets) traded on Polymarket over a 90-day window. We were asked three questions: is the operator's stated probability well-calibrated, does the live PnL exceed a naive baseline once we lock a forward cohort, and where is execution leaking. We received fills, timestamps, stated_p at entry, market mid at entry, and resolution. We did not receive the model itself and did not need to.
 
 **Top three findings.**
 - Calibration is tight on mid-probability bets (0.40–0.65) but Brier rises 38% on stated_p > 0.70, driven by 19 overconfident favorites.
@@ -37,7 +37,7 @@
 | Mean stated_p | 0.547 | |
 | Mean realized | 0.534 | |
 
-A Brier of 0.214 on binary sports contracts is in the band where a model is doing real work but is not exceptional. The 13 bps gap between stated and realized is within sampling noise on n=247.
+A Brier of 0.214 on binary political contracts is in the band where a model is doing real work but is not exceptional. The 13 bps gap between stated and realized is within sampling noise on n=247.
 
 **10-bucket calibration curve.** Buckets are deciles of stated_p. Wilson 95% CI shown.
 
@@ -103,11 +103,11 @@ Positions split by time between entry and resolution. PnL in cents per dollar st
 
 ## Page 5 — Three Failure Modes (Ranked)
 
-**1. Stale stated_p on heavy favorites.** Most operationally severe. The 0.85–0.95 bucket realized at 0.74 (Wilson [0.51, 0.88]). Surfaced from the calibration table on Page 2 plus a check that none of the 19 misses cluster in a single player, opponent, or stat line. The operator's model is confidently wrong on a structural slice, not unlucky on a few games. What to do: hold the strategy out on stated_p > 0.72 for one full cycle, then refit the favorite head on the held-out cohort. This is a calibration repair, not a strategy change.
+**1. Stale stated_p on heavy favorites.** Most operationally severe. The 0.85–0.95 bucket realized at 0.74 (Wilson [0.51, 0.88]). Surfaced from the calibration table on Page 2 plus a check that none of the 19 misses cluster in a single market category, time horizon, or resolution source. The operator's model is confidently wrong on a structural slice, not unlucky on a few events. What to do: hold the strategy out on stated_p > 0.72 for one full cycle, then refit the favorite head on the held-out cohort. This is a calibration repair, not a strategy change.
 
 **2. Spread is eating 38% of the edge.** Surfaced from the decomposition on Page 3 — fills reconstructed at mid lift gross PnL from +4.8 to +6.7 c/$. The operator is crossing the spread on 88% of entries. Average half-spread is 2.1 cents on contracts where the model is claiming a 4–6 cent edge. What to do: log best bid and best ask at decision time, then measure resting-fill rate when posting one tick inside. Even partial conversion to maker fills is worth ~1 c/$.
 
-**3. One resolution disagreement and four duplicate-event entries.** On reconciling the 247 positions to public Polymarket resolutions, one position the operator marked as a win was a market that resolved NO on a stat-correction (the operator's internal log was not updated after the official correction). Four pairs of positions were entered on the same market on the same day from what appears to be two separate processes; these were treated as independent in the operator's internal PnL but are not independent for risk. Surfaced by joining position_id to event_id and counting (event_id, side, day) tuples. What to do: add a uniqueness check on (event_id, side, day) at entry and a post-resolution reconciliation step against the public resolution feed. This is bookkeeping, not strategy, but the operator's self-reported PnL was off by 2.1 c/$ because of it.
+**3. One resolution disagreement and four duplicate-event entries.** On reconciling the 247 positions to public Polymarket resolutions, one position the operator marked as a win was a market that resolved NO on a resolution-source amendment (the operator's internal log was not updated after the official correction). Four pairs of positions were entered on the same market on the same day from what appears to be two separate processes; these were treated as independent in the operator's internal PnL but are not independent for risk. Surfaced by joining position_id to event_id and counting (event_id, side, day) tuples. What to do: add a uniqueness check on (event_id, side, day) at entry and a post-resolution reconciliation step against the public resolution feed. This is bookkeeping, not strategy, but the operator's self-reported PnL was off by 2.1 c/$ because of it.
 
 ---
 
@@ -125,7 +125,7 @@ Positions split by time between entry and resolution. PnL in cents per dollar st
 2. `best_bid`, `best_ask`, `mid`, `fill_price` at decision_ts and entry_ts.
 3. `order_type` (marketable, post-only, IOC), `intended_size`, `filled_size`.
 4. `stated_p_decision`, `stated_p_entry`, and an optional `stated_p_T_minus_1h` snapshot.
-5. `event_id`, `player_id`, `stat_type`, `side` as a composite uniqueness key.
+5. `event_id`, `market_category`, `resolution_source`, `side` as a composite uniqueness key.
 6. `resolution_source` and `resolution_correction_ts` if the official resolution is later amended.
 7. `model_version` and `feature_set_hash` so cohorts can be cut by model generation.
 
